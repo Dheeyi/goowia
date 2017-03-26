@@ -1,6 +1,7 @@
 <?php
 return [
     'settings' => [
+        'determineRouteBeforeAppMiddleware' => false,
         'displayErrorDetails' => true, // set to false in production
         'addContentLengthHeader' => false, // Allow the web server to send the content-length header
 
@@ -20,9 +21,9 @@ return [
         "db" => [
             'driver' => 'mysql',
             'host' => '127.0.0.1',
-            'database' => 'goowy',
+            'database' => 'goowia',
             'username' => 'root',
-            'password' => '4911697',
+            'password' => '',
             'collation' => 'utf8_general_ci',
             'prefix' => ''
         ],

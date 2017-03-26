@@ -14,8 +14,13 @@ class Task
         $this->task = new \Goowy\BusinessModel\Task\Task();
     }
 
-    public function getTasks($dbo)
+    /**
+     * Summary of getTasks
+     * @param mixed $c 
+     * @return app\controller\TaskController
+     */
+    public function getTasks($c)
     {
-        return $this->task->getAllData($dbo);
+        return $this->task->getAllData($c);
     }
 }

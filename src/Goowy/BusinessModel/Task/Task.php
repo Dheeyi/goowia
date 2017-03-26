@@ -5,18 +5,14 @@ namespace Goowy\BusinessModel\Task;
 class Task
 {
     /**
-     * @param $dbo
+     * @param $c
      * @return mixed
      */
-    public function getAllData($dbo)
+    public function getAllData($c)
     {
-        $sth = $dbo->db->select()
-            ->from('tasks')
-            ->orderBy('task');
-
-        $stmt = $sth->execute();
-        $allData = $stmt->fetchAll();
-
-        return $allData;
+        $view = new \Slim\Views\Twig('');
+        $logger = $c->get('logger');
+        $table = $c->get('db')->table('task');
+        return new \app\controller\TaskController($view, $logger, $table);
     }
 }
