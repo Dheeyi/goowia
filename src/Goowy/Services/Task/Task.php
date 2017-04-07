@@ -15,9 +15,8 @@ class Task
     }
 
     /**
-     * Summary of getTasks
-     * @param mixed $c 
-     * @return app\controller\TaskController
+     * @param $c
+     * @return mixed
      */
     public function getTasks($c)
     {

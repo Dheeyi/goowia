@@ -2,8 +2,7 @@
   "authors": [
     {
       "name": "Dheeyi William",
-      "email": "dheeyi@gmail.com",
-      "homepage": "http://www.dheeyreck.blogspot.com/"
+      "email": "dheeyi@gmail.com"
     }
   ],
   "autoload": {
@@ -25,7 +24,7 @@
   "license": "MIT",
   "name": "slim/android",
   "require": {
-    "php": ">=5.5.0",
+    "php": ">=5.6.0",
     "slim/slim": "^3.1",
     "slim/php-view": "^2.0",
     "slim/pdo": "~1.9",

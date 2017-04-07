@@ -23,7 +23,7 @@ return [
             'host' => '127.0.0.1',
             'database' => 'goowia',
             'username' => 'root',
-            'password' => '',
+            'password' => 'sample',
             'collation' => 'utf8_general_ci',
             'prefix' => ''
         ],

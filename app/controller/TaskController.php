@@ -40,6 +40,16 @@ class TaskController
         //    'widgets' => $widgets
         //]);
 
-        return 'will';
+        return $widgets;
+    }
+    public function getTableTask()
+    {
+        $widgets = $this->table->get();
+
+        //$this->view->render($response, 'app/index.twig', [
+        //    'widgets' => $widgets
+        //]);
+
+        return $widgets;
     }
 }
