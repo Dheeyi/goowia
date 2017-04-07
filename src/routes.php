@@ -1,9 +1,10 @@
 <?php
 
+use Goowia\Services\Task\Task;
 // get all todos
 $app->get('/api/v1/todos', function ($request, $response, $args) {
     try {
-        $task = new Goowy\Services\Task\Task();
+        $task = new Task();
         $data = $task->getTasks($this);
 
         if ($data) {
