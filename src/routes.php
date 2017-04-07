@@ -38,8 +38,6 @@ $app->post('/api/v1/todo', function ($request, $response) {
 //});
 
 
-
-
 //// Retrieve todo with id
 //$app->get('/todo/[{id}]', function ($request, $response, $args) {
 //    $sth = $this->db->prepare("SELECT * FROM tasks WHERE id=:id");
