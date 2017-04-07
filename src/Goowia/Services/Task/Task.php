@@ -20,6 +20,18 @@ class Task
      */
     public function getTasks($c)
     {
-        return $this->task->getAllData($c);
+        try {
+            $data = $this->task->getAllData($c);
+
+            if ($data) {
+                return $data;
+            } else {
+                throw new \PDOException('No records found.');
+            }
+
+        } catch (\PDOException $e) {
+            echo '{"error":{"text":' . $e->getMessage() . '}}';
+        }
+
     }
 }

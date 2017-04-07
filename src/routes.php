@@ -1,20 +1,15 @@
 <?php
 
 use Goowia\Services\Task\Task;
+
 // get all todos
 $app->get('/api/v1/todos', function ($request, $response, $args) {
     try {
         $task = new Task();
-        $data = $task->getTasks($this);
-
-        if ($data) {
-            return $this->response->withJson($data);
-        } else {
-            throw new PDOException('No records found.');
-        }
+        return $this->response->withJson($task->getTasks($this));
 
     } catch (PDOException $e) {
-        echo '{"error":{"text":' . $e->getMessage() . '}}';
+        echo $e->getMessage();
     }
 });
 
