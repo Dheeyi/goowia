@@ -1,6 +1,29 @@
 <?php
-
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
 use Goowia\Services\Task\Task;
+use Goowia\Connection\PMConnections;
+
+// add new pm connection
+$app->get('/', function ($request, $response, $args) {
+
+    $pmUser = 'root';
+    $pmDatabase = 'wf_will';
+    $pmInstance = 'will';
+    $pmServer = '127.0.0.1';
+    $pmLicense = 'empty';
+    $pmConn = new PMConnections\PMConnection($pmInstance, $pmServer, $pmDatabase, $pmUser, $pmLicense);
+    $pmConn->saveDataConnection($this);
+});
+
+
+$app->get('/hello/{name}/', function ($request, $response, $args) {
+
+    return $this->view->render($response, 'profile', [
+        'name' => $args['name'],
+    ]);
+})->setName('profile');
 
 // get all todos
 $app->get('/api/v1/todos', function ($request, $response, $args) {
