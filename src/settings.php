@@ -8,6 +8,8 @@ return [
         // Renderer settings
         'renderer' => [
             'template_path' => __DIR__ . '/../templates/',
+            'blade_template_path' => '../templates/views', // String or array of multiple paths
+            'blade_cache_path'    => '../templates/cache', // Mandatory by default, though could probably turn caching off for development
         ],
 
         // Monolog settings

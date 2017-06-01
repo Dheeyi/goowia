@@ -18,6 +18,13 @@ $container['logger'] = function ($c) {
     return $logger;
 };
 
+$container['view'] = function ($container) {
+    return new \Slim\Views\Blade(
+        $container['settings']['renderer']['blade_template_path'],
+        $container['settings']['renderer']['blade_cache_path']
+    );
+};
+
 //database
 $container['db'] = function ($c) {
     $settings = $c->get('settings')['db'];
@@ -25,6 +32,12 @@ $container['db'] = function ($c) {
     $capsule->addConnection($settings);
     $capsule->setAsGlobal();
     $capsule->bootEloquent();
+
+    $capsule->getContainer()->singleton(
+        Illuminate\Contracts\Debug\ExceptionHandler::class,
+        App\controller\Handler::class
+    );
+
 
     return $capsule;
 };
