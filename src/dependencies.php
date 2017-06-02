@@ -35,7 +35,7 @@ $container['db'] = function ($c) {
 
     $capsule->getContainer()->singleton(
         Illuminate\Contracts\Debug\ExceptionHandler::class,
-        App\controller\Handler::class
+        App\controller\HException::class
     );
 
 

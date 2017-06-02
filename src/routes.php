@@ -5,16 +5,23 @@ error_reporting(E_ALL);
 use Goowia\Services\Task\Task;
 use Goowia\Connection\PMConnections;
 
-// add new pm connection
-$app->get('/', function ($request, $response, $args) {
 
-    $pmUser = 'root';
-    $pmDatabase = 'wf_will';
-    $pmInstance = 'will';
-    $pmServer = '127.0.0.1';
-    $pmLicense = 'empty';
-    $pmConn = new PMConnections\PMConnection($pmInstance, $pmServer, $pmDatabase, $pmUser, $pmLicense);
-    $pmConn->saveDataConnection($this);
+$app->group('/api/v1/', function () {
+    $this->map(['GET', 'DELETE', 'PATCH', 'PUT', 'POST'], '', function ($request, $response, $args) {
+    $will = 'zxczx';
+    })->setName('pminstance');
+    $this->get('/reset-password', function ($request, $response, $args) {
+
+    })->setName('user-password-reset');
+});
+
+
+$app->post('/api/v1/pminstance', function ($request, $response, $args) {
+    $data = json_decode($request->getBody());
+    $pmConn = new PMConnections\PMConnection($data->PM_INSTANCE, $data->PM_SERVER, $data->PM_DATABASE, $data->PM_USER);
+    $resp = $pmConn->saveDataConnection($this);
+
+    return $response->withStatus(201)->getBody()->write($resp->toJson());
 });
 
 

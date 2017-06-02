@@ -17,7 +17,6 @@ class PMConnection
     private $pmServer;
     private $pmDatabase;
     private $pmUser;
-    private $pmLicense;
 
     /**
      * PMConnection constructor.
@@ -25,15 +24,13 @@ class PMConnection
      * @param $pmServer
      * @param $pmDatabase
      * @param $pmUser
-     * @param $pmLicense
      */
-    public function __construct($pmInstance, $pmServer, $pmDatabase, $pmUser, $pmLicense)
+    public function __construct($pmInstance, $pmServer, $pmDatabase, $pmUser)
     {
         $this->pmInstance = $pmInstance;
         $this->pmServer = $pmServer;
         $this->pmDatabase = $pmDatabase;
         $this->pmUser = $pmUser;
-        $this->pmLicense = $pmLicense;
     }
 
     /**
@@ -100,42 +97,17 @@ class PMConnection
         $this->pmUser = $pmUser;
     }
 
-    /**
-     * @return mixed
-     */
-    public function getPmLicense()
-    {
-        return $this->pmLicense;
-    }
 
-    /**
-     * @param mixed $pmLicense
-     */
-    public function setPmLicense($pmLicense)
-    {
-        $this->pmLicense = $pmLicense;
-    }
 
     public function saveDataConnection($c)
     {
-        $table = $c->get('db')->table('PM_CONNECTIONS');
-        $x = new \app\controller\PmConnectionController($table);
-        $data['PM_INSTANCE'] = $this->getPmInstance();
-        $data['PM_SERVER'] = $this->getPmServer();
-        $data['PM_DATABASE'] = $this->getPmDatabase();
-        $data['PM_USER'] = $this->getPmServer();
-
-        $widgets = $x->saveData($data);
-        $widgets = $widgets->all();
-        return $widgets;
-
-//        $dev->PM_INSTANCE = $this->getPmInstance();
-//        $dev->PM_SERVER = $this->getPmServer();
-//        $dev->PM_DATABASE = $this->getPmDatabase();
-//        $dev->PM_USER = $this->getPmServer();
-
-        $table->save();
-return 'wil';
-//        return $response->withStatus(201)->getBody()->write($dev->toJson());
+        $pmController = new \app\controller\PmConnectionsController();
+        $pmController->ID = null;
+        $pmController->PM_INSTANCE = $this->getPmInstance();
+        $pmController->PM_SERVER  = $this->getPmServer();
+        $pmController->PM_DATABASE  = $this->getPmDatabase();
+        $pmController->PM_USER  = $this->getPmServer();
+        $pmController->save();
+        return $pmController;
     }
 }

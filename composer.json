@@ -10,8 +10,7 @@
       "Goowia\\": "src/Goowia/"
     },
     "classmap": [
-      "app/controller",
-      "app/plugins/pmReports"
+      "app/controller"
     ]   
   },
   "autoload-dev": {
