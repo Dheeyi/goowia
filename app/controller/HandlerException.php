@@ -9,7 +9,7 @@
 namespace app\controller;
 
 
-class Handler implements \Illuminate\Contracts\Debug\ExceptionHandler {
+class HException implements \Illuminate\Contracts\Debug\ExceptionHandler {
     public function report(\Exception $e) {
         throw $e;
     }
